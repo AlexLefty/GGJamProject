@@ -91,7 +91,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				//cameraH.transform.SetParent(parentCam1.transform, false);
 			}else
 			{
-				if(!sitZone) controller.height = 1.7f;
+				if(!sitZone) controller.height = 2f;
 				//controller.center = new Vector3(controller.center.x, 0.9f, controller.center.z);
 				//cameraH.transform.SetParent(parentCam2.transform, false);
 			}

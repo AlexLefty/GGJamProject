@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Fire
+  - SitZone
   layers:
   - Default
   - TransparentFX
