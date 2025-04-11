@@ -11,6 +11,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
 		public CharacterController controller;
+		public bool sitZone;
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -90,11 +91,29 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				//cameraH.transform.SetParent(parentCam1.transform, false);
 			}else
 			{
-				controller.height = 1.7f;
+				if(!sitZone) controller.height = 1.7f;
 				//controller.center = new Vector3(controller.center.x, 0.9f, controller.center.z);
 				//cameraH.transform.SetParent(parentCam2.transform, false);
 			}
         }
+		
+		void OnTriggerEnter(Collider coll)
+		{
+			if(coll.tag == ("SitZone"))
+			{
+				controller.height = 0.5f;
+				sitZone = true;
+			}
+		}
+		
+		void OnTriggerExit(Collider coll)
+		{
+			if(coll.tag == ("SitZone"))
+			{
+				//controller.height = 1.7f;
+				sitZone = false;
+			}
+		}
 
 
         private void PlayLandingSound()
