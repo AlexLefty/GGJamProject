@@ -42,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
+        private bool m_isClimbing;
+        private Vector3 ladderClimbDirection = Vector3.zero;
         private AudioSource m_AudioSource;
 
         // Use this for initialization
@@ -76,8 +78,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+                m_isClimbing = false;
             }
-            if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
+            if (!m_CharacterController.isGrounded && !m_Jumping && !m_isClimbing && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
             }
@@ -104,6 +107,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				controller.height = 0.5f;
 				sitZone = true;
 			}
+            if (coll.tag == "Ladder")
+            {
+                m_isClimbing = true;
+                ladderClimbDirection = Vector3.up;
+            }
 		}
 		
 		void OnTriggerExit(Collider coll)
@@ -113,7 +121,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				//controller.height = 1.7f;
 				sitZone = false;
 			}
-		}
+            if (coll.tag == "Ladder")
+            {
+                m_isClimbing = false;
+                ladderClimbDirection = Vector3.zero;
+            }
+        }
 
 
         private void PlayLandingSound()
@@ -128,40 +141,50 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float speed;
             GetInput(out speed);
-            // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
-            // get a normal for the surface that is being touched to move along it
-            RaycastHit hitInfo;
-            Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
-                               m_CharacterController.height/2f);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
-
-            m_MoveDir.x = desiredMove.x*speed;
-            m_MoveDir.z = desiredMove.z*speed;
-
-
-            if (m_CharacterController.isGrounded)
+            if (m_isClimbing)
             {
-                m_MoveDir.y = -m_StickToGroundForce;
+                float climbInput = CrossPlatformInputManager.GetAxis("Vertical");
+                m_MoveDir = ladderClimbDirection * climbInput * speed;
 
-                if (m_Jump)
-                {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
-                }
+                m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
             }
             else
             {
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
-            }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+                Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+                RaycastHit hitInfo;
+                Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+                                   m_CharacterController.height / 2f);
+                desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+
+                m_MoveDir.x = desiredMove.x * speed;
+                m_MoveDir.z = desiredMove.z * speed;
+
+                if (m_CharacterController.isGrounded)
+                {
+                    m_MoveDir.y = -m_StickToGroundForce;
+
+                    if (m_Jump)
+                    {
+                        m_MoveDir.y = m_JumpSpeed;
+                        PlayJumpSound();
+                        m_Jump = false;
+                        m_Jumping = true;
+                    }
+                }
+                else
+                {
+                    m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                }
+
+                m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
+
+                ProgressStepCycle(speed);
+                UpdateCameraPosition(speed);
+            }
         }
+
 
 
         private void PlayJumpSound()
