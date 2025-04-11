@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [AddComponentMenu("DoTween/DoMove")]
-public class DoMove : MonoBehaviour
+public class DoMove : MonoBehaviour, IActivatable
 {
     [SerializeField] private Vector3 m_position;
     [SerializeField] private float m_speed;
