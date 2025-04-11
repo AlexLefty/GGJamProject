@@ -1,0 +1,57 @@
+﻿using System.Linq;
+using DG.Tweening;
+using UnityEngine;
+
+public class Platform : MonoBehaviour, IActivatable
+{
+    [SerializeField] private bool m_isActivateOnStart = true;
+    [SerializeField] private bool m_isInitialPosIsFirst = true;
+    [SerializeField] private float m_speed = 10f;
+    [SerializeField] private Vector3[] m_path;
+
+    private int m_current = -1;
+
+    private void Awake()
+    {
+        if (m_isInitialPosIsFirst)
+        {
+            var list = m_path.ToList();
+            list.Add(this.transform.position);
+            m_path = list.ToArray();
+        }
+    }
+
+    private void Start()
+    {
+        if (m_isActivateOnStart) Activate();
+    }
+
+    public void Activate()
+    {
+        LoopCallbackRecursive();
+    }
+
+    public void LoopCallbackRecursive()
+    {
+        m_current = (m_current + 1) % m_path.Length;
+
+        float distance = Vector3.Distance(m_path[m_current], this.transform.position);
+        float duration = distance / m_speed;
+
+        this.transform
+            .DOMove(m_path[m_current], duration)
+            .SetEase(Ease.Linear)
+            .onComplete += Activate;
+
+        // TODO: надеюсь стек не переполнится из-за таких вызовов
+    }
+
+
+    [ContextMenu("Добавить позицию в маршрут")]
+    public void AddCurrentPosToPath()
+    {
+        var list = m_path.ToList();
+        list.Add(this.transform.position);
+        m_path = list.ToArray();
+    }
+}
