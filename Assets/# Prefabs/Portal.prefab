@@ -212,10 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b469c70ce690f5c43aac3f94a71e2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTeleportation: 2
-  position: {x: 2, y: 2, z: 5}
   timeTeleportation: 5
-  position: {x: 5, y: 5, z: 5}
+  position: {x: 2, y: 2, z: 5}
   onStartTeleportation:
     m_PersistentCalls:
       m_Calls: []
