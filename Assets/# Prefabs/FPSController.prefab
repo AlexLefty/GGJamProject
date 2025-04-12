@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1938391243597644153}
   m_Layer: 0
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interactionDistance: 4
   m_activationKey: 101
-  _interactionHintUI: {fileID: 0}
+  _hintGUI: {fileID: 0}
   _hintText: {fileID: 0}
 --- !u!54 &3121384339176235888
 Rigidbody:
