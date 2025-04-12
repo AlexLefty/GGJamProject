@@ -12,10 +12,18 @@ public class SceneManager : MonoBehaviour
 
     private GameObject currentPlayer;
 
+    public static SceneManager Instance { get; private set; } // TODO: Надеюсь этот позор никто не увидит...
+    public GameObject Player => currentPlayer;
+
     private void Awake()
     {
         HideCursor();
         SpawnPlayer();
+    }
+
+    private void Start()
+    {
+        Instance = this;
     }
 
     /// <summary>
