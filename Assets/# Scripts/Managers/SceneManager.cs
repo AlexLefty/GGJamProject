@@ -6,6 +6,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform spawnPoint;
 
+    [Header("UI settings")]
+    [SerializeField] private GameObject hintUI;
+
 
     private GameObject currentPlayer;
 
@@ -46,6 +49,8 @@ public class SceneManager : MonoBehaviour
         if (playerPrefab != null && spawnPoint != null)
         {
             currentPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+
+            currentPlayer.GetComponent<Activator>().HintUI = hintUI;
         }
         else
         {

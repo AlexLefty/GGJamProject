@@ -8,11 +8,23 @@ public class Activator : MonoBehaviour
     [Tooltip("Клавиша активации")]
     [SerializeField] private KeyCode m_activationKey = KeyCode.E;
     [Tooltip("UI-элемент с текстом подсказки")]
-    [SerializeField] private GameObject _interactionHintUI;
+    [SerializeField] private GameObject _hintGUI;
     [SerializeField] private TMP_Text _hintText;
 
     private Camera _mainCamera;
     private ActivatableObject _currentActivatable;
+
+    public GameObject HintUI
+    {
+        get => _hintGUI;
+        set
+        {
+            _hintGUI = value;
+
+            if (value is not null) 
+                _hintText = value.GetComponent<TMP_Text>() ?? GetComponentInChildren<TMP_Text>();
+        }
+    }
 
 
     private void Start()
@@ -52,7 +64,7 @@ public class Activator : MonoBehaviour
                     _currentActivatable = activatable;
 
                     PositionHintUI(hit.collider.transform);
-                    _hintText.text = string.Format(_currentActivatable.ActivationHintFormat, m_activationKey.ToString());
+                    ChangeHintText(_currentActivatable.ActivationHintFormat);
                 }
             }
             else
@@ -72,12 +84,23 @@ public class Activator : MonoBehaviour
     /// <param name="target"></param>
     private void PositionHintUI(Transform target)
     {
-        if (_interactionHintUI == null) return;
+        if (_hintGUI is null) return;
 
-        _interactionHintUI.SetActive(true);
+        _hintGUI.SetActive(true);
         Vector3 worldPosition = target.position + Vector3.up * 1.5f;
         Vector3 screenPosition = _mainCamera.WorldToScreenPoint(worldPosition);
-        _interactionHintUI.transform.position = screenPosition;
+        _hintGUI.transform.position = screenPosition;
+    }
+
+    /// <summary>
+    /// Измение текста подсказки
+    /// </summary>
+    /// <param name="hintText"></param>
+    private void ChangeHintText(string hintText)
+    {
+        if (hintText is null) return;
+
+        _hintText.text = string.Format(hintText, m_activationKey.ToString());
     }
 
     private void ClearCurrentActivatable()
@@ -86,7 +109,7 @@ public class Activator : MonoBehaviour
         {
             _currentActivatable.Highlight(false);
             _currentActivatable = null;
-            _interactionHintUI.SetActive(false);
+            _hintGUI.SetActive(false);
         }
     }
 }

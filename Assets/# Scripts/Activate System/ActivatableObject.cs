@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Базовый класс для всех активируемых предметов. Нужно унаследовать его и добавить логику активации.
-/// </summary>
-public abstract class ActivatableObject : MonoBehaviour, IActivatable
+public class ActivatableObject : MonoBehaviour, IActivatable
 {
     [Header("Settings")]
     [SerializeField] protected bool m_isMultipleUse;

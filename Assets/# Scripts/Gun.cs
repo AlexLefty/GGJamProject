@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
     private void CheckForActivatable(Collider target)
     {
         IActivatable activatable = target.GetComponent<IActivatable>();
-        if (activatable != null)
+        if (activatable is not null)
         {
             activatable.Activate();
         }
@@ -59,7 +59,7 @@ public class Gun : MonoBehaviour
     private void CheckForDamageable(Collider target)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
-        if (damageable != null)
+        if (damageable is not null)
         {
             damageable.TakeDamage(m_damage);
         }
@@ -67,16 +67,16 @@ public class Gun : MonoBehaviour
 
     private void PlayShootEffects()
     {
-        if (m_muzzleFlash != null)
+        if (m_muzzleFlash is not null)
             m_muzzleFlash.Play();
 
-        if (m_shootSound != null)
+        if (m_shootSound is not null)
             _audioSource.PlayOneShot(m_shootSound);
     }
 
     private void SpawnHitEffect(Vector3 position, Vector3 normal)
     {
-        if (m_hitEffectPrefab != null)
+        if (m_hitEffectPrefab is not null)
         {
             GameObject effect = Instantiate(m_hitEffectPrefab, position, Quaternion.LookRotation(normal));
             Destroy(effect, 1f);
