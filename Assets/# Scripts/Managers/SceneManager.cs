@@ -59,6 +59,7 @@ public class SceneManager : MonoBehaviour
             currentPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
             currentPlayer.GetComponent<Activator>().HintUI = hintUI;
+            currentPlayer.GetComponent<Player>().OnKilled.AddListener(SpawnPlayer);
         }
         else
         {
