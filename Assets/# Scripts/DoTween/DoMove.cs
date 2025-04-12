@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoMove : MonoBehaviour, IActivatable
 {
     [SerializeField] private Vector3 m_position;
-    [SerializeField] private float m_speed;
+    [SerializeField] private float m_duration;
     [SerializeField] private Transform m_target;
 
     private bool m_isActivated;
@@ -14,7 +14,7 @@ public class DoMove : MonoBehaviour, IActivatable
     {
         if (m_isActivated) return;
 
-        m_target.DOMove(m_position, m_speed);
+        m_target.DOMove(m_position, m_duration);
 
         m_isActivated = true;
     }

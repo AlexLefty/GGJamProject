@@ -8,6 +8,7 @@ TagManager:
   - Fire
   - SitZone
   - Ladder
+  - Button
   layers:
   - Default
   - TransparentFX
