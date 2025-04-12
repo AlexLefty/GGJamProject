@@ -307,6 +307,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            if (hit.gameObject.tag == "Platform")
+            {
+                Debug.Log("Da");
+                gameObject.transform.SetParent(hit.gameObject.transform);
+            }
+
             Rigidbody body = hit.collider.attachedRigidbody;
             //dont move the rigidbody if the character is on top of it
             if (m_CollisionFlags == CollisionFlags.Below)
@@ -319,11 +325,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
 			
-			if (hit.gameObject.tag == "Platform")
-			{
-				Debug.Log("Da");
-				gameObject.transform.SetParent(hit.gameObject.transform);
-			}
 			
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
