@@ -27,11 +27,11 @@ public class RedLamp : MonoBehaviour
 		if(OnOff)
 		{
 			gameObject.GetComponent<MeshRenderer>().enabled = true;
-			myLight.enabled = !myLight.enabled;
+			//myLight.enabled = !myLight.enabled;
 		}else
 		{
 			gameObject.GetComponent<MeshRenderer>().enabled = false;
-			myLight.enabled = !myLight.enabled;
+			//myLight.enabled = !myLight.enabled;
 		}
 	}
 }

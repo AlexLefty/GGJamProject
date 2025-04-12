@@ -87,7 +87,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 			
-			if(Input.GetKey("c"))
+			if(Input.GetKey(KeyCode.LeftControl))
 			{
 				controller.height = 0.5f;
 				//controller.center = new Vector3(controller.center.x, 0.4f, controller.center.z);
