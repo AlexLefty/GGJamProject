@@ -133,7 +133,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		{
 			if(coll.tag == ("SitZone"))
 			{
-				Debug.Log("Da");
 				controller.height = 0.5f;
 				sitZone = true;
 			}
@@ -143,7 +142,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 ladderClimbDirection = Vector3.up;
             }
 		}
-
 
         private void PlayLandingSound()
         {
@@ -320,6 +318,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
+			
+			if (hit.gameObject.tag == "Platform")
+			{
+				Debug.Log("Da");
+				gameObject.transform.SetParent(hit.gameObject.transform);
+			}
+			
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
     }

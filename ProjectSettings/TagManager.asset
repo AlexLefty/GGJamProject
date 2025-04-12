@@ -9,6 +9,7 @@ TagManager:
   - SitZone
   - Ladder
   - Button
+  - Platform
   layers:
   - Default
   - TransparentFX
