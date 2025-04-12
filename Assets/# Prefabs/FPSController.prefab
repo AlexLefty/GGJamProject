@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2134516200863223585}
   - component: {fileID: 3121384339176235888}
   - component: {fileID: 1938391243597644153}
-  - component: {fileID: 3455901349268526089}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -329,29 +328,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &3455901349268526089
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235340333479365705}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.81
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5095992801509981040
 GameObject:
   m_ObjectHideFlags: 0
