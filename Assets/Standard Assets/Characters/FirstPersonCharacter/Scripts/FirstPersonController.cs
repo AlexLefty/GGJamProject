@@ -100,10 +100,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			}
         }
 		
-		void OnTriggerEnter(Collider coll)
+		/*void OnTriggerEnter(Collider coll)
 		{
 			if(coll.tag == ("SitZone"))
 			{
+				Debug.Log("Da");
 				controller.height = 0.5f;
 				sitZone = true;
 			}
@@ -112,7 +113,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_isClimbing = true;
                 ladderClimbDirection = Vector3.up;
             }
-		}
+		}*/
 		
 		void OnTriggerExit(Collider coll)
 		{
@@ -127,6 +128,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 ladderClimbDirection = Vector3.zero;
             }
         }
+		
+		void OnTriggerStay(Collider coll)
+		{
+			if(coll.tag == ("SitZone"))
+			{
+				Debug.Log("Da");
+				controller.height = 0.5f;
+				sitZone = true;
+			}
+            if (coll.tag == "Ladder")
+            {
+                m_isClimbing = true;
+                ladderClimbDirection = Vector3.up;
+            }
+		}
 
 
         private void PlayLandingSound()
