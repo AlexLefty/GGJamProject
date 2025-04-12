@@ -9,9 +9,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private float m_damage = 10f;
 
     [Header("Effects")]
-    [SerializeField] private ParticleSystem m_muzzleFlash;
-    [SerializeField] private AudioClip m_shootSound;
-    [SerializeField] private GameObject m_hitEffectPrefab;
+    //[SerializeField] private ParticleSystem m_muzzleFlash;
+    //[SerializeField] private AudioClip m_shootSound;
+    //[SerializeField] private GameObject m_hitEffectPrefab;
 
     private AudioSource _audioSource;
     private Camera _playerCamera;
@@ -51,36 +51,30 @@ public class Gun : MonoBehaviour
     private void CheckForActivatable(Collider target)
     {
         IActivatable activatable = target.GetComponent<IActivatable>();
-        if (activatable is not null)
-        {
-            activatable.Activate();
-        }
+
+        activatable?.Activate();
     }
 
     private void CheckForDamageable(Collider target)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
-        if (damageable is not null)
-        {
-            damageable.TakeDamage(m_damage);
-        }
+
+        damageable?.TakeDamage(m_damage);
     }
 
     private void PlayShootEffects()
     {
-        if (m_muzzleFlash is not null)
-            m_muzzleFlash.Play();
+        //m_muzzleFlash?.Play();
 
-        if (m_shootSound is not null)
-            _audioSource.PlayOneShot(m_shootSound);
+        //_audioSource?.PlayOneShot(m_shootSound);
     }
 
     private void SpawnHitEffect(Vector3 position, Vector3 normal)
     {
-        if (m_hitEffectPrefab is not null)
-        {
-            GameObject effect = Instantiate(m_hitEffectPrefab, position, Quaternion.LookRotation(normal));
-            Destroy(effect, 1f);
-        }
+        //if (m_hitEffectPrefab is not null)
+        //{
+        //    GameObject effect = Instantiate(m_hitEffectPrefab, position, Quaternion.LookRotation(normal));
+        //    Destroy(effect, 1f);
+        //}
     }
 }
