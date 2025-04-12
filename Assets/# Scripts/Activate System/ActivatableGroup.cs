@@ -11,7 +11,7 @@ public class ActivatableGroup : MonoBehaviour, IActivatable
     [Header("Settings")]
     [SerializeField] private bool m_isMultipleUse;
     [Space, SerializeField] private UnityEvent m_onActivating = new();
-    [HideInInspector] public List<Activatable> _activators;
+    [HideInInspector] public List<ActivatableObject> _activators;
 
     private bool m_isActivated;
 

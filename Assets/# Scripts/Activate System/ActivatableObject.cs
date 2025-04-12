@@ -4,10 +4,11 @@ using UnityEngine.Events;
 /// <summary>
 /// Базовый класс для всех активируемых предметов. Нужно унаследовать его и добавить логику активации.
 /// </summary>
-public abstract class Activatable : MonoBehaviour, IActivatable
+public abstract class ActivatableObject : MonoBehaviour, IActivatable
 {
     [Header("Settings")]
     [SerializeField] protected bool m_isMultipleUse;
+    [SerializeField] private string m_activationHintFormat = "Нажмите {0} чтобы открыть";
     [Tooltip("Не работает если находится в группе кнопок"), Space]
     [SerializeField] protected UnityEvent m_action = new();
     [Header("Bindings")]
@@ -21,6 +22,7 @@ public abstract class Activatable : MonoBehaviour, IActivatable
         get => m_isActivated;
         internal set => m_isActivated = value;
     }
+    public string ActivationHintFormat => m_activationHintFormat;
 
 
     protected virtual void Awake()
@@ -51,5 +53,14 @@ public abstract class Activatable : MonoBehaviour, IActivatable
             m_action.Invoke();
             m_isActivated = true;
         }
+    }
+
+    /// <summary>
+    /// Подсвечивает объект при наведении
+    /// </summary>
+    /// <param name="state"></param>
+    public void Highlight(bool state)
+    {
+
     }
 }
