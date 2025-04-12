@@ -178,6 +178,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
+                //// Проверка на платформу
+                //if (hitInfo.collider != null && hitInfo.collider.CompareTag("Platform"))
+                //{
+                //    transform.SetParent(hitInfo.transform, true);
+                //}
+                //else
+                //{
+                //    transform.SetParent(null);
+                //}
+
                 if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
@@ -189,6 +199,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else
             {
                 m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                //transform.SetParent(null);
             }
 
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
