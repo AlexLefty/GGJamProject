@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
 
     [Header("Effects")]
     //[SerializeField] private ParticleSystem m_muzzleFlash;
-    //[SerializeField] private AudioClip m_shootSound;
+    [SerializeField] private AudioClip m_shootSound;
     //[SerializeField] private GameObject m_hitEffectPrefab;
 
     private AudioSource _audioSource;
@@ -66,7 +66,7 @@ public class Gun : MonoBehaviour
     {
         //m_muzzleFlash?.Play();
 
-        //_audioSource?.PlayOneShot(m_shootSound);
+        _audioSource?.PlayOneShot(m_shootSound);
     }
 
     private void SpawnHitEffect(Vector3 position, Vector3 normal)
