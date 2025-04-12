@@ -213,8 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTeleportation: 2
-  position: {x: 2, y: 2, z: 5}
-  timeTeleportation: 5
   position: {x: 5, y: 5, z: 5}
   onStartTeleportation:
     m_PersistentCalls:
