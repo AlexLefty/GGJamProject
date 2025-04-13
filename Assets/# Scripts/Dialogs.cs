@@ -10,12 +10,16 @@ public class Dialogs : MonoBehaviour
 	public bool dialog4;
 	public bool dialog5;
 	public bool dialog6;
+	
+	public GameObject UIDialogs;
+	
 	public AudioClip[] musicClips;
 	public AudioSource source;
 	
 	
     void Awake()
     {
+		UIDialogs = GameObject.FindGameObjectWithTag("UIDialogs");
 		source = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         dialog1 = true;
     }
@@ -71,31 +75,36 @@ public class Dialogs : MonoBehaviour
 		}
     }
 	
-	void OnTriggerExit(Collider coll)
+	void OnTriggerEnter(Collider coll)
 		{
 			if(coll.tag == ("Dialog2"))
 			{
 				dialog2 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog2());
 				Destroy(coll);
 			}
 			if(coll.tag == ("Dialog3"))
 			{
 				dialog3 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog3());
 				Destroy(coll);
 			}
 			if(coll.tag == ("Dialog4"))
 			{
 				dialog4 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog4());
 				Destroy(coll);
 			}
 			if(coll.tag == ("Dialog5"))
 			{
 				dialog5 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog5());
 				Destroy(coll);
 			}
 			if(coll.tag == ("Dialog6"))
 			{
 				dialog6 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog6());
 				Destroy(coll);
 			}
             
