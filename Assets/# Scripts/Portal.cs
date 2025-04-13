@@ -2,17 +2,27 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Portal : MonoBehaviour, IActivatable
+public class Portal : MonoBehaviour, IActivatable, IDeactivable
 {
     [Header("Settings")]
     [SerializeField] private bool isActivated = true;
     [SerializeField] private float timeTeleportation = 3;
     [SerializeField] private Transform position;
+    [Header("Callbacks")]
+    [SerializeField, Space] private UnityEvent onActivating = new();
+    [SerializeField, Space] private UnityEvent onDeactivating = new();
     [SerializeField, Space] private UnityEvent onStartTeleportation = new();
+    [Header("Bindings")]
+    [SerializeField] private GameObject lightning;
 
     private bool isTeleporting = false;
     private PlayerControl player;
 
+
+    private void Awake()
+    {
+        lightning?.SetActive(isActivated);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +39,17 @@ public class Portal : MonoBehaviour, IActivatable
     }
 
 
-    public void Activate() => isActivated = true;
+    public void Activate()
+    {
+        isActivated = true;
+        onActivating.Invoke();
+    }
+    public void Deactivate()
+    {
+        isActivated = false;
+        onDeactivating.Invoke();
+    }
+
 
     private async void Teleport()
     {
