@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float m_shootDistance = 100f;
     [SerializeField] private KeyCode m_shootKey = KeyCode.Mouse0;
     [SerializeField] private float m_damage = 10f;
+    [SerializeField] private bool m_ShootingIsLocked = true;
 
     [Header("Effects")]
     //[SerializeField] private ParticleSystem m_muzzleFlash;
@@ -17,6 +18,9 @@ public class Gun : MonoBehaviour
     private Camera _playerCamera;
 
 
+    public bool ShotingIsLocked { get => m_ShootingIsLocked; set => m_ShootingIsLocked = value; }
+
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -25,7 +29,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(m_shootKey))
+        if (Input.GetKeyDown(m_shootKey) && !m_ShootingIsLocked)
         {
             Shoot();
         }

@@ -46,6 +46,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 ladderClimbDirection = Vector3.zero;
         private AudioSource m_AudioSource;
 
+        public bool JumpingIsLocked { get; set; }
+        public bool MovementIsLocked { get; set; }
+        public bool SeatingIsLocked { get; set; }
+
+
         // Use this for initialization
         private void Start()
         {
@@ -67,7 +72,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if (!m_Jump && !JumpingIsLocked)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
@@ -87,7 +92,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 			
-			if(Input.GetKey(KeyCode.LeftControl))
+			if(Input.GetKey(KeyCode.LeftControl) && !SeatingIsLocked)
 			{
 				controller.height = 0.5f;
 				//controller.center = new Vector3(controller.center.x, 0.4f, controller.center.z);
@@ -279,6 +284,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+            if (MovementIsLocked)
+            {
+                speed = 0f;
+                return;
+            }
+
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");

@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    [Header("Player Settings")]
-    [SerializeField] private GameObject playerPrefab;
-
     [Header("UI settings")]
-    [SerializeField] private GameObject hintUI;
+    public GameObject hintUI;
 
-
-    private GameObject currentPlayer;
 
     public static SceneManager Instance { get; private set; } // TODO: Надеюсь этот позор никто не увидит...
-    public GameObject Player => currentPlayer;
 
 
     private void Awake()
@@ -20,11 +14,6 @@ public class SceneManager : MonoBehaviour
         HideCursor();
 
         Instance = this;
-    }
-
-    private void Start()
-    {
-        SpawnPlayer();
     }
 
 
@@ -44,30 +33,5 @@ public class SceneManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-
-    /// <summary>
-    /// Спавнит игрока в указанной точке спавна
-    /// </summary>
-    public void SpawnPlayer()
-    {
-        if (currentPlayer != null)
-        {
-            Destroy(currentPlayer);
-        }
-
-        Transform spawnPoint = CheckPointManager.Instance._currentCheckPoint.transform;
-
-        if (playerPrefab != null && spawnPoint != null)
-        {
-            currentPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-
-            currentPlayer.GetComponent<Activator>().HintUI = hintUI;
-            currentPlayer.GetComponent<Player>().OnKilled.AddListener(SpawnPlayer);
-        }
-        else
-        {
-            Debug.LogError("PlayerPrefab or SpawnPoint not assigned in CursorManager!");
-        }
     }
 }
