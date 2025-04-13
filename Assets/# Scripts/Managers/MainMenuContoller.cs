@@ -8,6 +8,13 @@ public class MainMenuContoller : MonoBehaviour
     [SerializeField] private string levelName = "Level";
 
 
+    private void Awake()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+
     public void Play()
     {
         SceneManager.LoadScene(splashScreenName, LoadSceneMode.Additive);
