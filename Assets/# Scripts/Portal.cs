@@ -16,7 +16,7 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
     [SerializeField] private GameObject lightning;
 
     private bool isTeleporting = false;
-    [SerializeField] private PlayerControl player;
+    [SerializeField] private PlayerController player;
 
 
     private void Awake()
@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player = other.gameObject.GetComponent<PlayerControl>();
+            player = other.gameObject.GetComponent<PlayerController>();
             Teleport();
         }
     }
