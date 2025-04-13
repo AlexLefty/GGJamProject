@@ -60,6 +60,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void KillPlayer() => _currentPlayer?.Kill();
+
     public void AddNullLimit(PlayerNullChars limit)
     {
         if (_playerNullLimits.Contains(limit)) return;
