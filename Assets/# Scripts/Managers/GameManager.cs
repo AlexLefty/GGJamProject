@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [Header("UI settings")]
     public GameObject hintUI;
 
 
-    public static SceneManager Instance { get; private set; } // TODO: Надеюсь этот позор никто не увидит...
+    public static GameManager Instance { get; private set; } // TODO: Надеюсь этот позор никто не увидит...
 
 
     private void Awake()
