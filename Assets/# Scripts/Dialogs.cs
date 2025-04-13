@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Dialogs : MonoBehaviour
 {
@@ -13,17 +15,22 @@ public class Dialogs : MonoBehaviour
 	public bool dialog7;
 	public bool dialog8;
 	public bool dialog9;
+	public bool Finishbool;
+	
+	public float Timer;
 	
 	public GameObject UIDialogs;
 	
 	public AudioClip[] musicClips;
 	public AudioSource source;
 	
+	public GameObject Finish;
+	
 	
     void Awake()
     {
 		UIDialogs = GameObject.FindGameObjectWithTag("UIDialogs");
-		//source = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+		Finish = GameObject.FindGameObjectWithTag("Finish");
         dialog1 = true;
     }
 
@@ -96,11 +103,33 @@ public class Dialogs : MonoBehaviour
 		if(dialog9)
 		{
 			dialog9 = false;
+			Finishbool = true;
 			source.Stop();
 			source.clip = musicClips[8];
 			source.Play();
 		}
+		
+		if(Finishbool)
+		{
+			//Finishbool = false;
+			Timer += 1 * Time.deltaTime;
+			if(Timer >= 5)
+			{
+				
+				Finish.GetComponent<Image>().color =  Color.Lerp(Finish.GetComponent<Image>().color, new Color(0, 0, 0, 1), Time.deltaTime);
+				Invoke("LoadMenu", 10);
+			}
+		}
+		
+		
+		
+		
     }
+	
+	public void LoadMenu()
+		{
+			SceneManager.LoadScene(0);
+		}
 	
 	void OnTriggerEnter(Collider coll)
 		{
