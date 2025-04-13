@@ -63,8 +63,10 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
 
         if (player is not null)
         {
+            player._fpsController.m_CharacterController.enabled = false;
             player.transform.position = position.position;
             player.transform.rotation = position.rotation;
+            player._fpsController.m_CharacterController.enabled = true;
         }
 
         isTeleporting = false;
