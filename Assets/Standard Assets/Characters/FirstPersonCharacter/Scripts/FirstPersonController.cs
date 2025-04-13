@@ -329,6 +329,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            // TODO: На светлое будущее
             //if (hit.gameObject.CompareTag("Platform"))
             //{
             //    m_CharacterController.enabled = false;
