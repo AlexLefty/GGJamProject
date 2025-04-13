@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
     [Header("Shooting Settings")]
     [SerializeField] private float m_shootDistance = 100f;
     [SerializeField] private KeyCode m_shootKey = KeyCode.Mouse0;
+    [SerializeField] private LayerMask m_layerMask_E;
     [SerializeField] private float m_damage = 10f;
     [SerializeField] private bool m_ShootingIsLocked = true;
 
@@ -40,13 +41,17 @@ public class Gun : MonoBehaviour
         PlayShootEffects();
 
         Ray ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
+        RaycastHit hit, hitE;
+
+        if (Physics.Raycast(ray, out hitE, m_shootDistance, m_layerMask_E))
+        {
+            CheckForActivatable(hitE.collider);
+        }
 
         if (Physics.Raycast(ray, out hit, m_shootDistance))
         {
             SpawnHitEffect(hit.point, hit.normal);
 
-            CheckForActivatable(hit.collider);
             CheckForDamageable(hit.collider);
         }
     }
