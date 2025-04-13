@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
@@ -39,7 +40,6 @@ public class Gun : MonoBehaviour
     {
         PlayShootEffects();
 
-        Debug.DrawRay(_playerCamera.transform.position, Vector3.forward, Color.yellow, 1.7f);
         Ray ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
