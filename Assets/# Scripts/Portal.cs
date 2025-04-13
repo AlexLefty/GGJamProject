@@ -20,6 +20,6 @@ public class Portal : MonoBehaviour, IActivatable
 
         yield return new WaitForSeconds(timeTeleportation);
 
-        SceneManager.Instance.Player.transform.position = this.position;
+        PlayerManager.Instance.Player.transform.position = this.position;
     }
 }
