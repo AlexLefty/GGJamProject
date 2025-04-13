@@ -10,6 +10,9 @@ public class Dialogs : MonoBehaviour
 	public bool dialog4;
 	public bool dialog5;
 	public bool dialog6;
+	public bool dialog7;
+	public bool dialog8;
+	public bool dialog9;
 	
 	public GameObject UIDialogs;
 	
@@ -73,6 +76,30 @@ public class Dialogs : MonoBehaviour
 			source.clip = musicClips[5];
 			source.Play();
 		}
+		
+		if(dialog7)
+		{
+			dialog7 = false;
+			source.Stop();
+			source.clip = musicClips[6];
+			source.Play();
+		}
+		
+		if(dialog8)
+		{
+			dialog8 = false;
+			source.Stop();
+			source.clip = musicClips[7];
+			source.Play();
+		}
+		
+		if(dialog9)
+		{
+			dialog9 = false;
+			source.Stop();
+			source.clip = musicClips[8];
+			source.Play();
+		}
     }
 	
 	void OnTriggerEnter(Collider coll)
@@ -80,6 +107,9 @@ public class Dialogs : MonoBehaviour
 			if(coll.tag == ("Dialog2"))
 			{
 				dialog2 = true;
+				StopCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog1_1());
+				StopCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog1_2());
+				StopCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog1_3());
 				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog2());
 				Destroy(coll);
 			}
@@ -105,6 +135,24 @@ public class Dialogs : MonoBehaviour
 			{
 				dialog6 = true;
 				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog6());
+				Destroy(coll);
+			}
+			if(coll.tag == ("Dialog7"))
+			{
+				dialog7 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog7());
+				Destroy(coll);
+			}
+			if(coll.tag == ("Dialog8"))
+			{
+				dialog7 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog7());
+				Destroy(coll);
+			}
+			if(coll.tag == ("Dialog8"))
+			{
+				dialog7 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog7());
 				Destroy(coll);
 			}
             

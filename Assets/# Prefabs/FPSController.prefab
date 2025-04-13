@@ -368,6 +368,10 @@ MonoBehaviour:
   dialog4: 0
   dialog5: 0
   dialog6: 0
+  dialog7: 0
+  dialog8: 0
+  dialog9: 0
+  UIDialogs: {fileID: 0}
   musicClips:
   - {fileID: 8300000, guid: 3788b63220e1fda438214f10d25ad8b9, type: 3}
   - {fileID: 8300000, guid: 4d9fccb2dff493d4f9abdd2b8ff5d182, type: 3}
@@ -375,6 +379,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 71234e2fe67cefe4a81035cb66baea69, type: 3}
   - {fileID: 8300000, guid: 5df7a44f65fc1c444894ed4c7c1d7dfc, type: 3}
   - {fileID: 8300000, guid: 5738fc2789cbec64ebc324351c3989ec, type: 3}
+  - {fileID: 8300000, guid: bc349a8d8bb8c884ab796a58bc58b7e8, type: 3}
+  - {fileID: 8300000, guid: 7fb985577adf67c47b994f9c050b4eca, type: 3}
+  - {fileID: 8300000, guid: b38cbd3194f4d204281a09982bba5f9d, type: 3}
   source: {fileID: 0}
 --- !u!1 &5095992801509981040
 GameObject:
