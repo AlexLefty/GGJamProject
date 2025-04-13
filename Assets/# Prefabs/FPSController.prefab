@@ -371,6 +371,8 @@ MonoBehaviour:
   dialog7: 0
   dialog8: 0
   dialog9: 0
+  Finishbool: 0
+  Timer: 0
   UIDialogs: {fileID: 0}
   musicClips:
   - {fileID: 8300000, guid: 3788b63220e1fda438214f10d25ad8b9, type: 3}
@@ -383,6 +385,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fb985577adf67c47b994f9c050b4eca, type: 3}
   - {fileID: 8300000, guid: b38cbd3194f4d204281a09982bba5f9d, type: 3}
   source: {fileID: 3152735037867191536}
+  Finish: {fileID: 0}
 --- !u!1 &5095992801509981040
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +453,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -717,7 +720,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
