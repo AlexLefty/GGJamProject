@@ -46,25 +46,28 @@ public class Activator : MonoBehaviour
 
     private void CheckForActivatable()
     {
-        Vector3 origin = _mainCamera.transform.position;
-        Vector3 direction = _mainCamera.transform.forward;
-        float radius = 2.5f;
+        Ray ray = _mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
 
-        Vector3 point1 = origin - Vector3.up * 0.5f;
-        Vector3 point2 = origin + Vector3.up * 0.5f;
 
-        if (Physics.CapsuleCast(point1, point2, radius, direction, out RaycastHit hit, m_interactionDistance, m_layerMask_E))
+        if (Physics.Raycast(ray, out hit, m_interactionDistance, m_layerMask_E))
         {
             var activatable = hit.collider.GetComponent<ActivatableObject>();
 
-            if (_currentActivatable != activatable)
+            if (activatable != null)
             {
-                ClearCurrentActivatable();
-                if (activatable != null)
+                if (_currentActivatable != activatable)
+
                 {
+                    ClearCurrentActivatable();
                     _currentActivatable = activatable;
+
                     PositionHintUI(hit.collider.transform);
                 }
+            }
+            else
+            {
+                ClearCurrentActivatable();
             }
         }
         else
