@@ -51,6 +51,7 @@ public class HUDController : MonoBehaviour
         imageGunIndicator.sprite = _sprite_gun_blue;
         imageGunBarIndicator.sprite = _sprite_gun_bar_blue;
         imagePlayerIndicator.sprite = _sprite_Human_blue;
+        imagePlayerIndicator.fillAmount = 1f; // TODO: лютый говнокод
 
         foreach (var limit in limits)
         {
