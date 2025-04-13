@@ -29,7 +29,7 @@ public class ActivatableObject : MonoBehaviour, IActivatable
 
         m_audioSource = GetComponent<AudioSource>();
 
-        if (m_audioSource.clip is not null)
+        if (m_audioSource is not null)
             m_audioSource.clip = m_clip;
     }
 
