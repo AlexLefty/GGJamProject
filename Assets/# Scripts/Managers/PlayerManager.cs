@@ -75,6 +75,9 @@ public class PlayerManager : MonoBehaviour
             _currentPlayer.transform.position = pos;
             _currentPlayer.transform.rotation = point.transform.rotation;
             _currentPlayer._fpsController.m_CharacterController.enabled = true;
+
+            _playerNullLimits = new PlayerNullChars[0];
+            NullLimitsUpdatedEvent.Invoke();
         }
     }
 
