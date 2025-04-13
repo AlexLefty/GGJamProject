@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
     private void CheckForActivatable(Collider target)
     {
         IActivatable activatable = target.GetComponent<IActivatable>();
-
+        if (activatable != null) print("Activate");
         activatable?.Activate();
     }
 
