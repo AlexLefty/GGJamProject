@@ -9,6 +9,7 @@ public class Dialogs : MonoBehaviour
 	public bool dialog3;
 	public bool dialog4;
 	public bool dialog5;
+	public bool dialog6;
 	public AudioClip[] musicClips;
 	public AudioSource source;
 	
@@ -57,7 +58,15 @@ public class Dialogs : MonoBehaviour
 		{
 			dialog5 = false;
 			source.Stop();
-			source.clip = musicClips[3];
+			source.clip = musicClips[4];
+			source.Play();
+		}
+		
+		if(dialog6)
+		{
+			dialog6 = false;
+			source.Stop();
+			source.clip = musicClips[5];
 			source.Play();
 		}
     }
@@ -82,6 +91,11 @@ public class Dialogs : MonoBehaviour
 			if(coll.tag == ("Dialog5"))
 			{
 				dialog5 = true;
+				Destroy(coll);
+			}
+			if(coll.tag == ("Dialog6"))
+			{
+				dialog6 = true;
 				Destroy(coll);
 			}
             

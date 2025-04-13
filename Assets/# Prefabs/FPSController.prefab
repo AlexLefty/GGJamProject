@@ -364,10 +364,12 @@ MonoBehaviour:
   dialog2: 0
   dialog3: 0
   dialog4: 0
+  dialog5: 0
   musicClips:
   - {fileID: 8300000, guid: 3788b63220e1fda438214f10d25ad8b9, type: 3}
   - {fileID: 8300000, guid: 4d9fccb2dff493d4f9abdd2b8ff5d182, type: 3}
   - {fileID: 8300000, guid: e09adbf0bd611d64db535c259124f678, type: 3}
+  - {fileID: 8300000, guid: 71234e2fe67cefe4a81035cb66baea69, type: 3}
   - {fileID: 8300000, guid: 5df7a44f65fc1c444894ed4c7c1d7dfc, type: 3}
   - {fileID: 8300000, guid: 5738fc2789cbec64ebc324351c3989ec, type: 3}
   source: {fileID: 0}
