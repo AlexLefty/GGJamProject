@@ -1,21 +1,26 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour
 {
     [Header("Shooting Settings")]
     [SerializeField] private float m_shootDistance = 100f;
     [SerializeField] private KeyCode m_shootKey = KeyCode.Mouse0;
     [SerializeField] private LayerMask m_layerMask_E;
+    [SerializeField] private float m_delayShoots = 1.5f;
     [SerializeField] private float m_damage = 10f;
     [SerializeField] private bool m_ShootingIsLocked = true;
 
     [Header("Effects")]
     //[SerializeField] private ParticleSystem m_muzzleFlash;
     [SerializeField] private AudioClip m_shootSound;
-    //[SerializeField] private GameObject m_hitEffectPrefab;
+    [SerializeField] private GameObject m_hitEffectPrefab;
 
+    private bool m_isShootLocked;
     private AudioSource _audioSource;
+    private Animator _animator;
     private Camera _playerCamera;
 
 
@@ -25,6 +30,7 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
         _playerCamera = Camera.main;
     }
 
@@ -38,6 +44,8 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+        if (m_isShootLocked) return;
+
         PlayShootEffects();
 
         Ray ray = _playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -54,6 +62,15 @@ public class Gun : MonoBehaviour
 
             CheckForDamageable(hit.collider);
         }
+
+        Delay();
+    }
+
+    private async void Delay()
+    {
+        m_isShootLocked = true;
+        await UniTask.Delay((int)m_delayShoots*1000);
+        m_isShootLocked = false;
     }
 
     private void CheckForActivatable(Collider target)
@@ -74,15 +91,16 @@ public class Gun : MonoBehaviour
     {
         //m_muzzleFlash?.Play();
 
+        _animator.SetTrigger("shoot");
         _audioSource?.PlayOneShot(m_shootSound);
     }
 
     private void SpawnHitEffect(Vector3 position, Vector3 normal)
     {
-        //if (m_hitEffectPrefab is not null)
-        //{
-        //    GameObject effect = Instantiate(m_hitEffectPrefab, position, Quaternion.LookRotation(normal));
-        //    Destroy(effect, 1f);
-        //}
+        if (m_hitEffectPrefab is not null)
+        {
+            GameObject effect = Instantiate(m_hitEffectPrefab, position, Quaternion.LookRotation(normal));
+            Destroy(effect, 1f);
+        }
     }
 }
