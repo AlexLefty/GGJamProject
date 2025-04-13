@@ -1,12 +1,16 @@
 ﻿using System.Linq;
-using DG.Tweening;
+using System.Threading;
 using UnityEngine;
+using DG.Tweening;
+using Cysharp.Threading.Tasks;
 
 public class Platform : MonoBehaviour, IActivatable, IDeactivable
 {
     [SerializeField] private bool m_isActivated = true;
     [SerializeField] private bool m_isInitialPosIsFirst = true;
     [SerializeField] private float m_speed = 10f;
+    [Tooltip("Задержка в конце маршрута")]
+    [SerializeField] private float m_endDelay = 4f;
     [SerializeField] private Vector3[] m_path;
 
     private int m_current = -1;
@@ -49,11 +53,15 @@ public class Platform : MonoBehaviour, IActivatable, IDeactivable
     }
 
 
-    public void LoopCallbackRecursive()
+    public async void LoopCallbackRecursive()
     {
         if (!m_isActivated) return;
 
-        m_current = (m_current + 1) % m_path.Length;
+        if (++m_current >= m_path.Length)
+        {
+            await UniTask.Delay((int)m_endDelay*1000);
+            m_current %= m_path.Length;
+        }
 
         float distance = Vector3.Distance(m_path[m_current], this.transform.position);
         float duration = distance / m_speed;
