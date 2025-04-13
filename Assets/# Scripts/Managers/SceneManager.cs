@@ -4,7 +4,6 @@ public class SceneManager : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform spawnPoint;
 
     [Header("UI settings")]
     [SerializeField] private GameObject hintUI;
@@ -15,16 +14,19 @@ public class SceneManager : MonoBehaviour
     public static SceneManager Instance { get; private set; } // TODO: Надеюсь этот позор никто не увидит...
     public GameObject Player => currentPlayer;
 
+
     private void Awake()
     {
         HideCursor();
-        SpawnPlayer();
+
+        Instance = this;
     }
 
     private void Start()
     {
-        Instance = this;
+        SpawnPlayer();
     }
+
 
     /// <summary>
     /// Скрывает и замораживает курсор, устанавливая его в центр экрана
@@ -53,6 +55,8 @@ public class SceneManager : MonoBehaviour
         {
             Destroy(currentPlayer);
         }
+
+        Transform spawnPoint = CheckPointManager.Instance._currentCheckPoint.transform;
 
         if (playerPrefab != null && spawnPoint != null)
         {
