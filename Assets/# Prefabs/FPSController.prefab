@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 645596279089763209}
   - component: {fileID: 1176644009726586745}
+  - component: {fileID: 4805717869052675121}
   - component: {fileID: 466856971195955564}
   - component: {fileID: 2134516200863223585}
   - component: {fileID: 3121384339176235888}
-  - component: {fileID: 4805717869052675121}
   - component: {fileID: 1938391243597644153}
   m_Layer: 0
   m_Name: FPSController
@@ -65,6 +65,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4805717869052675121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235340333479365705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a52e69bad90e54a8baf54c03a86b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  _gun: {fileID: 5631623800716148354}
+  _fpsController: {fileID: 0}
 --- !u!114 &466856971195955564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,21 +250,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4805717869052675121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235340333479365705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfbcaa539b47e424cbdcaf679da72a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onKilled:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!82 &1938391243597644153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -773,3 +775,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2784807391045328630, guid: e39b011ea1698c04abe08c833df70fdd, type: 3}
   m_PrefabInstance: {fileID: 1249499413030658028}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5631623800716148354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6877156175114297710, guid: e39b011ea1698c04abe08c833df70fdd, type: 3}
+  m_PrefabInstance: {fileID: 1249499413030658028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d72acd09c8553b4f84e448f011080b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
