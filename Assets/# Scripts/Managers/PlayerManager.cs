@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
             _currentPlayer = Instantiate(_playerPrefab, spawnPoint.position, spawnPoint.rotation)
                 .GetComponent<PlayerController>();
 
-            _currentPlayer.GetComponent<Activator>().HintUI = SceneManager.Instance.hintUI;
+            _currentPlayer.GetComponent<Activator>().HintUI = GameManager.Instance.hintUI;
             _currentPlayer.OnKilled.AddListener(SpawnPlayer);
 
             NullLimitsApply(_currentPlayer);
