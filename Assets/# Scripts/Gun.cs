@@ -31,6 +31,10 @@ public class Gun : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
         _playerCamera = Camera.main;
     }
 
