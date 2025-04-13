@@ -20,12 +20,12 @@ public class Door : MonoBehaviour, ITogglable
 
     public void Open()
     {
-        _animator.SetTrigger("open");
+        _animator.SetBool("isOpen", true);
     }
 
     public void Close()
     {
-        _animator.SetTrigger("close");
+        _animator.SetBool("isOpen", false);
     }
 
     public void Toogle()
