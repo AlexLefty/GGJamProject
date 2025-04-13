@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8526452229383190332}
   - component: {fileID: 7021092008808686720}
+  - component: {fileID: 6178807755099086356}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -212,8 +213,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b469c70ce690f5c43aac3f94a71e2551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 5, y: 5, z: 5}
+  isActivated: 1
   timeTeleportation: 5
+  position: {fileID: 0}
   onStartTeleportation:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &6178807755099086356
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8428104403072291472}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 1.18, z: 0}
