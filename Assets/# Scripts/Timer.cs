@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour, IActivatable, IDeactivable
     private System.Collections.IEnumerator TimerCoroutine()
     {
         yield return new WaitForSeconds(m_time);
+        print("KILL");
         onTimerEnd?.Invoke();
         timerCoroutine = null;
     }
