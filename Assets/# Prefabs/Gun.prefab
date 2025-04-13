@@ -182,6 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shootDistance: 100
   m_shootKey: 323
+  m_layerMask_E:
+    serializedVersion: 2
+    m_Bits: 512
   m_damage: 10
   m_ShootingIsLocked: 0
   m_shootSound: {fileID: 8300000, guid: 4c2448c648e6b154e8a0850c0b6b4919, type: 3}

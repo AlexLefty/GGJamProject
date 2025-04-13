@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3315476091899777177}
   - component: {fileID: 1467878166326789083}
   - component: {fileID: 8949173537480111789}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cyclinder
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2095348982141651329}
   - component: {fileID: 8969323346548932881}
   - component: {fileID: 1461360030419548724}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Button Activator
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 3659397718776612495}
   - component: {fileID: 4269969443914912445}
   - component: {fileID: 8554858363854077053}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Button
   m_Icon: {fileID: 0}
