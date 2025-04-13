@@ -70,7 +70,7 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2994641755955371070}
         m_TargetAssemblyTypeName: CheckPoint, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 1
