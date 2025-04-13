@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class PlayerManager : MonoBehaviour
                 .GetComponent<PlayerController>();
 
             _currentPlayer.GetComponent<Activator>().HintUI = GameManager.Instance.hintUI;
-            _currentPlayer.OnKilled.AddListener(SpawnPlayer);
+            _currentPlayer.OnKilled.AddListener(OnKill);
 
             NullLimitsApply(_currentPlayer);
         }
@@ -61,6 +62,21 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void KillPlayer() => _currentPlayer?.Kill();
+    public void OnKill()
+    {
+        CheckPoint point = CheckPointManager.Instance._currentCheckPoint;
+
+        if (point is null) SpawnPlayer();
+        else
+        {
+            _currentPlayer._fpsController.m_CharacterController.enabled = false;
+            Vector3 pos = point.transform.position;
+            pos.y += 2f;
+            _currentPlayer.transform.position = pos;
+            _currentPlayer.transform.rotation = point.transform.rotation;
+            _currentPlayer._fpsController.m_CharacterController.enabled = true;
+        }
+    }
 
     public void AddNullLimit(PlayerNullChars limit)
     {

@@ -25,7 +25,5 @@ public class PlayerController : MonoBehaviour
     public void Kill()
     {
         OnKilled.Invoke();
-
-        Destroy(gameObject);
     }
 }
