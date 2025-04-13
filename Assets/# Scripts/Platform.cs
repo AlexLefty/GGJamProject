@@ -3,6 +3,7 @@ using System.Threading;
 using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
 
 public class Platform : MonoBehaviour, IActivatable, IDeactivable
 {
@@ -19,9 +20,10 @@ public class Platform : MonoBehaviour, IActivatable, IDeactivable
     {
         if (m_isInitialPosIsFirst)
         {
-            var list = m_path.ToList();
-            list.Add(this.transform.position);
-            m_path = list.ToArray();
+            List<Vector3> path = new();
+            path.Add(this.transform.position);
+            path.AddRange(m_path);
+            m_path = path.ToArray();
         }
     }
 
