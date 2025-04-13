@@ -105,6 +105,11 @@ public class PlayerManager : MonoBehaviour
         if (state) AddNullLimit(PlayerNullChars.Shooting);
         else RemoveNullLimit(PlayerNullChars.Shooting);
     }
+    public void LockBreathe(bool state)
+    {
+        if (state) AddNullLimit(PlayerNullChars.Breathe);
+        else RemoveNullLimit(PlayerNullChars.Breathe);
+    }
 
 
     private void OnNullLimitsUpdated() => NullLimitsApply(_currentPlayer);
