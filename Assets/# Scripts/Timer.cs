@@ -12,15 +12,18 @@ public class Timer : MonoBehaviour, IActivatable, IDeactivable
 
     public void Activate()
     {
+        if (m_timer is not null) return;
+
         m_timer = new(m_time);
         m_timer.Elapsed += TimerCallback;
         m_timer.AutoReset = false;
         m_timer.Enabled = true;
-
+        m_timer.Start();
     }
 
     public void Deactivate()
     {
+        m_timer.Stop();
         m_timer.Enabled = false;
         m_timer = null;
     }
