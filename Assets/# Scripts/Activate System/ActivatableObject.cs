@@ -28,6 +28,9 @@ public class ActivatableObject : MonoBehaviour, IActivatable
             group._activators.Add(this);
 
         m_audioSource = GetComponent<AudioSource>();
+
+        if (m_audioSource.clip is not null)
+            m_audioSource.clip = m_clip;
     }
 
     private void OnDestroy()
@@ -38,8 +41,6 @@ public class ActivatableObject : MonoBehaviour, IActivatable
 
     public void Activate()
     {
-        m_audioSource.clip = m_clip;
-        m_audioSource.loop = false;
         m_audioSource.Play();
 
         if (group is not null)

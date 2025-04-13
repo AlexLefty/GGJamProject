@@ -2,11 +2,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
 public class Portal : MonoBehaviour, IActivatable, IDeactivable
 {
     [Header("Settings")]
     [SerializeField] private bool isActivated = true;
     [SerializeField] private float timeTeleportation = 3;
+    [SerializeField] private AudioClip m_clip;
     [SerializeField] private Transform position;
     [Header("Callbacks")]
     [SerializeField, Space] private UnityEvent onActivating = new();
@@ -16,12 +18,18 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
     [SerializeField] private GameObject lightning;
 
     private bool isTeleporting = false;
-    [SerializeField] private PlayerController player;
+    private AudioSource m_audioSource;
+    private PlayerController player;
 
 
     private void Awake()
     {
         lightning?.SetActive(isActivated);
+
+        m_audioSource = GetComponent<AudioSource>();
+
+        if (m_audioSource.clip is not null)
+            m_audioSource.clip = m_clip;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,6 +71,8 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
 
         if (player is not null)
         {
+            m_audioSource.Play();
+
             player._fpsController.m_CharacterController.enabled = false;
             Vector3 pos = position.position;
             pos.y += 2f;
