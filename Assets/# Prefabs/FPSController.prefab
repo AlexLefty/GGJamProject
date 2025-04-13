@@ -368,6 +368,7 @@ MonoBehaviour:
   dialog4: 0
   dialog5: 0
   dialog6: 0
+  UIDialogs: {fileID: 0}
   musicClips:
   - {fileID: 8300000, guid: 3788b63220e1fda438214f10d25ad8b9, type: 3}
   - {fileID: 8300000, guid: 4d9fccb2dff493d4f9abdd2b8ff5d182, type: 3}
@@ -654,7 +655,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3145242290231022866}
   - component: {fileID: 7462637780209650061}
-  - component: {fileID: 2475682454277397583}
   - component: {fileID: 3188790997383932576}
   - component: {fileID: 2236848167771487044}
   m_Layer: 7
@@ -731,14 +731,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2475682454277397583
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7191302392435720611}
-  m_Enabled: 1
 --- !u!114 &3188790997383932576
 MonoBehaviour:
   m_ObjectHideFlags: 0
