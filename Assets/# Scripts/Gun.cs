@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip m_shootSound;
     [SerializeField] private GameObject m_hitEffectPrefab;
 
-    private bool m_isShootLocked;
+    private bool m_isReloaded;
     private AudioSource _audioSource;
     private Animator _animator;
     private Camera _playerCamera;
@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(m_shootKey) && !m_ShootingIsLocked)
+        if (Input.GetKeyDown(m_shootKey) && !m_ShootingIsLocked && !m_isReloaded)
         {
             Shoot();
         }
@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        if (m_isShootLocked) return;
+        Delay();
 
         PlayShootEffects();
 
@@ -62,15 +62,13 @@ public class Gun : MonoBehaviour
 
             CheckForDamageable(hit.collider);
         }
-
-        Delay();
     }
 
     private async void Delay()
     {
-        m_isShootLocked = true;
+        m_isReloaded = true;
         await UniTask.Delay((int)m_delayShoots*1000);
-        m_isShootLocked = false;
+        m_isReloaded = false;
     }
 
     private void CheckForActivatable(Collider target)
