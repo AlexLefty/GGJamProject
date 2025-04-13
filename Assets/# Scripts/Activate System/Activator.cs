@@ -88,7 +88,7 @@ public class Activator : MonoBehaviour
         Camera mainCamera = Camera.main;
         if (mainCamera != null)
         {
-            Vector3 directionToCamera = mainCamera.transform.position - _hintGUI.transform.position;
+            Vector3 directionToCamera = _hintGUI.transform.position - mainCamera.transform.position;
             directionToCamera.y = 0;
             _hintGUI.transform.rotation = Quaternion.LookRotation(directionToCamera);
         }
