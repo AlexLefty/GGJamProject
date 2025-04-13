@@ -64,7 +64,9 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
         if (player is not null)
         {
             player._fpsController.m_CharacterController.enabled = false;
-            player.transform.position = position.position;
+            Vector3 pos = position.position;
+            pos.y += 2f;
+            player.transform.position = pos;
             player.transform.rotation = position.rotation;
             player._fpsController.m_CharacterController.enabled = true;
         }
