@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 1
-  timeTeleportation: 5
+  timeTeleportation: 0
   position: {fileID: 0}
   onActivating:
     m_PersistentCalls:
@@ -250,6 +250,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   lightning: {fileID: 3525718450609307779}
+  player: {fileID: 0}
 --- !u!65 &6178807755099086356
 BoxCollider:
   m_ObjectHideFlags: 0

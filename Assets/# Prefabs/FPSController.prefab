@@ -224,7 +224,6 @@ MonoBehaviour:
   m_interactionDistance: 4
   m_activationKey: 101
   _hintGUI: {fileID: 0}
-  _hintText: {fileID: 0}
 --- !u!54 &3121384339176235888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -365,6 +364,7 @@ MonoBehaviour:
   dialog3: 0
   dialog4: 0
   dialog5: 0
+  dialog6: 0
   musicClips:
   - {fileID: 8300000, guid: 3788b63220e1fda438214f10d25ad8b9, type: 3}
   - {fileID: 8300000, guid: 4d9fccb2dff493d4f9abdd2b8ff5d182, type: 3}
@@ -716,7 +716,7 @@ Camera:
   m_Depth: 0.1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

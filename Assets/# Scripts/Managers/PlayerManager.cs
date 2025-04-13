@@ -87,23 +87,23 @@ public class PlayerManager : MonoBehaviour
     // Для настройки на сцене
     public void LockJumping(bool state)
     {
-        if (_currentPlayer is null) return;
-        _currentPlayer._fpsController.JumpingIsLocked = state;
+        if (state) AddNullLimit(PlayerNullChars.Jumping);
+        else RemoveNullLimit(PlayerNullChars.Jumping);
     }
     public void LockSeating(bool state)
     {
-        if (_currentPlayer is null) return;
-        _currentPlayer._fpsController.SeatingIsLocked = state;
+        if (state) AddNullLimit(PlayerNullChars.Seating);
+        else RemoveNullLimit(PlayerNullChars.Seating);
     }
     public void LockMovement(bool state)
     {
-        if (_currentPlayer is null) return;
-        _currentPlayer._fpsController.MovementIsLocked = state;
+        if (state) AddNullLimit(PlayerNullChars.Movement);
+        else RemoveNullLimit(PlayerNullChars.Movement);
     }
     public void LockShooting(bool state)
     {
-        if (_currentPlayer is null) return;
-        _currentPlayer._gun.ShotingIsLocked = state;
+        if (state) AddNullLimit(PlayerNullChars.Shooting);
+        else RemoveNullLimit(PlayerNullChars.Shooting);
     }
 
 
