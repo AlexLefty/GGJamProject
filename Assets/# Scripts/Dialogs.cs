@@ -145,14 +145,14 @@ public class Dialogs : MonoBehaviour
 			}
 			if(coll.tag == ("Dialog8"))
 			{
-				dialog7 = true;
-				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog7());
+				dialog8 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog8());
 				Destroy(coll);
 			}
-			if(coll.tag == ("Dialog8"))
+			if(coll.tag == ("Dialog9"))
 			{
-				dialog7 = true;
-				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog7());
+				dialog9 = true;
+				StartCoroutine(UIDialogs.GetComponent<TextDialog>().CorDialog9());
 				Destroy(coll);
 			}
             

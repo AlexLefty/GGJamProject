@@ -16,6 +16,9 @@ TagManager:
   - Dialog5
   - Dialog6
   - UIDialogs
+  - Dialog7
+  - Dialog8
+  - Dialog9
   layers:
   - Default
   - TransparentFX
