@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 1
-  timeTeleportation: 0
+  timeTeleportation: 3
   position: {fileID: 0}
   onActivating:
     m_PersistentCalls:
