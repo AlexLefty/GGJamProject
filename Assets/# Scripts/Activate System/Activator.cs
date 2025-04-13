@@ -9,7 +9,6 @@ public class Activator : MonoBehaviour
     [SerializeField] private KeyCode m_activationKey = KeyCode.E;
     [Tooltip("UI-элемент с текстом подсказки")]
     [SerializeField] private GameObject _hintGUI;
-    [SerializeField] private TMP_Text _hintText;
 
     private Camera _mainCamera;
     private ActivatableObject _currentActivatable;
@@ -20,9 +19,6 @@ public class Activator : MonoBehaviour
         set
         {
             _hintGUI = value;
-
-            if (value is not null) 
-                _hintText = value.GetComponent<TMP_Text>() ?? GetComponentInChildren<TMP_Text>();
         }
     }
 
@@ -64,7 +60,6 @@ public class Activator : MonoBehaviour
                     _currentActivatable = activatable;
 
                     PositionHintUI(hit.collider.transform);
-                    ChangeHintText(_currentActivatable.ActivationHintFormat);
                 }
             }
             else
@@ -90,17 +85,6 @@ public class Activator : MonoBehaviour
         Vector3 worldPosition = target.position + Vector3.up * 1.5f;
         Vector3 screenPosition = _mainCamera.WorldToScreenPoint(worldPosition);
         _hintGUI.transform.position = screenPosition;
-    }
-
-    /// <summary>
-    /// Измение текста подсказки
-    /// </summary>
-    /// <param name="hintText"></param>
-    private void ChangeHintText(string hintText)
-    {
-        if (hintText is null) return;
-
-        _hintText.text = string.Format(hintText, m_activationKey.ToString());
     }
 
     private void ClearCurrentActivatable()
