@@ -23,7 +23,7 @@ public class Dialogs : MonoBehaviour
     void Awake()
     {
 		UIDialogs = GameObject.FindGameObjectWithTag("UIDialogs");
-		source = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+		//source = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         dialog1 = true;
     }
 
