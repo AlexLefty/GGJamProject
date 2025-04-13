@@ -223,6 +223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interactionDistance: 4
   m_activationKey: 101
+  m_layerMask_E:
+    serializedVersion: 2
+    m_Bits: 512
   _hintGUI: {fileID: 0}
 --- !u!54 &3121384339176235888
 Rigidbody:

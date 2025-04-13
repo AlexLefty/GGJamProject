@@ -7,6 +7,7 @@ public class Activator : MonoBehaviour
     [SerializeField] private float m_interactionDistance = 5f;
     [Tooltip("Клавиша активации")]
     [SerializeField] private KeyCode m_activationKey = KeyCode.E;
+    [SerializeField] private LayerMask m_layerMask_E;
     [Tooltip("UI-элемент с текстом подсказки")]
     [SerializeField] private GameObject _hintGUI;
 
@@ -52,7 +53,7 @@ public class Activator : MonoBehaviour
         Vector3 point1 = origin - Vector3.up * 0.5f;
         Vector3 point2 = origin + Vector3.up * 0.5f;
 
-        if (Physics.CapsuleCast(point1, point2, radius, direction, out RaycastHit hit, m_interactionDistance))
+        if (Physics.CapsuleCast(point1, point2, radius, direction, out RaycastHit hit, m_interactionDistance, m_layerMask_E))
         {
             var activatable = hit.collider.GetComponent<ActivatableObject>();
 
