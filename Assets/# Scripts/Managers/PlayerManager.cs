@@ -144,5 +144,6 @@ public enum PlayerNullChars
     Jumping,
     Movement,
     Shooting,
-    Seating
+    Seating,
+    Breathe
 }
