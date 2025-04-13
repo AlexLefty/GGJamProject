@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2457949599727287244}
   - component: {fileID: 6196929369105830543}
   - component: {fileID: 7980737151328948392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2703641614901526182}
   - component: {fileID: 6376170288600020050}
   - component: {fileID: 6408742719574750778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hint Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7140641748759507945}
   - component: {fileID: 1433238434972431410}
   - component: {fileID: 8428433569854932961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
