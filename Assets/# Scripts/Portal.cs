@@ -26,16 +26,16 @@ public class Portal : MonoBehaviour, IActivatable, IDeactivable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            player = other.GetComponent<PlayerControl>();
+            player = other.gameObject.GetComponent<PlayerControl>();
             Teleport();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) player = null;
+        if (other.gameObject.CompareTag("Player")) player = null;
     }
 
 
