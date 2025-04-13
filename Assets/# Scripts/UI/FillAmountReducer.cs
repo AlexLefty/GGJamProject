@@ -1,14 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FillAmountReducer : MonoBehaviour
 {
     [SerializeField] private Image targetImage;
     [SerializeField] private float seconds = 5f;
 
+    private Coroutine currentRoutine;
     private bool isActive = false;
-    private float timer = 0f;
 
     public float Seconds
     {
@@ -23,36 +23,35 @@ public class FillAmountReducer : MonoBehaviour
             targetImage.type = Image.Type.Filled;
         }
 
+        if (currentRoutine != null)
+            StopCoroutine(currentRoutine);
+
         isActive = true;
-        timer = 0f;
-
-        if (targetImage != null)
-            targetImage.fillAmount = 1f;
-
-        TimerLoop();
+        targetImage.fillAmount = 1f;
+        currentRoutine = StartCoroutine(FillRoutine());
     }
 
     public void Deactivate()
     {
         isActive = false;
+
+        if (currentRoutine != null)
+            StopCoroutine(currentRoutine);
+
         targetImage.fillAmount = 1f;
     }
 
-    private async void TimerLoop()
+    private IEnumerator FillRoutine()
     {
-        if (!isActive || targetImage == null) return;
+        float timer = 0f;
 
-        var delay = UniTask.Delay((int)Time.fixedDeltaTime*1000);
-        float progress = 0f;
-
-        while (progress < 1f)
+        while (timer < seconds && isActive)
         {
-            timer += Time.fixedDeltaTime;
-            progress = Mathf.Clamp01(timer / seconds);
-            await delay;
+            timer += Time.deltaTime;
+            targetImage.fillAmount = 1f - Mathf.Clamp01(timer / seconds);
+            yield return null;
         }
 
         isActive = false;
     }
 }
-
