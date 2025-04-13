@@ -180,7 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d72acd09c8553b4f84e448f011080b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shootDistance: 100
+  m_shootDistance: 150
   m_shootKey: 323
   m_damage: 10
+  m_ShootingIsLocked: 1
   m_shootSound: {fileID: 8300000, guid: 4c2448c648e6b154e8a0850c0b6b4919, type: 3}
